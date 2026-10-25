@@ -288,6 +288,25 @@
         radial-gradient(ellipse at 50% 40%,#29384b 0%,#141923 42%,#0b0c10 78%);
     }
 
+    .project-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: contain;
+      padding: 18px;
+      position: absolute;
+      inset: 0;
+      transition: transform .6s ease;
+    }
+
+    .project-card:hover .project-visual img { transform: scale(1.04); }
+
+    .project-card:first-child .project-visual img {
+      height: 100%;
+      min-height: 580px;
+    }
+
     .project-card:first-child .project-visual {
       height: calc(100% - 80px);
       min-height: 580px;
@@ -543,11 +562,11 @@
       <div class="project-grid">
         <article class="project-card">
           <div class="project-visual">
-            <div class="project-object"></div>
+            <img src="assets/images/gopro%201.png" alt="GoPro product render" loading="lazy">
           </div>
           <div class="project-caption">
             <div>
-              <h3>Camera Visuals</h3>
+              <h3>GoPro — Product Visuals</h3>
               <p>Product visualization · 3D</p>
             </div>
             <span class="project-number">01 ↗</span>
@@ -556,11 +575,11 @@
 
         <article class="project-card">
           <div class="project-visual">
-            <div class="project-object"></div>
+            <img src="assets/images/estee%201.jpg" alt="Estée Lauder product render" loading="lazy">
           </div>
           <div class="project-caption">
             <div>
-              <h3>Beauty & Care</h3>
+              <h3>Estée Lauder</h3>
               <p>Product render · Lighting</p>
             </div>
             <span class="project-number">02 ↗</span>
@@ -569,11 +588,11 @@
 
         <article class="project-card">
           <div class="project-visual">
-            <div class="project-object"></div>
+            <img src="assets/images/insta%20360%201.jpg" alt="Insta360 product render" loading="lazy">
           </div>
           <div class="project-caption">
             <div>
-              <h3>Product Studies</h3>
+              <h3>Insta360 — Product Visuals</h3>
               <p>Materials · Composition</p>
             </div>
             <span class="project-number">03 ↗</span>
@@ -641,4 +660,3 @@
   </script>
 </body>
 </html>
-
