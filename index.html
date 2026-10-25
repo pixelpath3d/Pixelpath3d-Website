@@ -1,662 +1,136 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08090c">
-  <meta name="description" content="Pixelpath3D by Pirendra — 3D product visualization, product animation and creative post-production.">
-  <title>Pixelpath3D® — Crafted to Be Seen</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #08090c;
-      --panel: #101217;
-      --white: #f4f4f0;
-      --muted: #8b8d96;
-      --line: rgba(255,255,255,.13);
-      --blue: #9acbff;
-      --max: 1380px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: "DM Sans", sans-serif;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    button { font: inherit; }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 9vw));
-      margin-inline: auto;
-    }
-
-    .topbar {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 21px;
-      letter-spacing: -1px;
-    }
-
-    .brand span { color: var(--blue); }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 13px;
-      color: #c0c1c7;
-    }
-
-    .nav a:hover { color: var(--blue); }
-
-    .contact-link {
-      border: 1px solid #555861;
-      padding: 12px 18px;
-      border-radius: 3px;
-      font-size: 12px;
-      transition: .25s;
-    }
-
-    .contact-link:hover {
-      background: var(--white);
-      color: var(--bg);
-    }
-
-    .hero {
-      min-height: 700px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 5vw;
-      padding-block: 85px 105px;
-    }
-
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 28px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 500;
-    }
-
-    h1 {
-      font-size: clamp(56px, 7.2vw, 108px);
-      letter-spacing: -.075em;
-      line-height: .94;
-      max-width: 800px;
-    }
-
-    h1 .outline {
-      color: transparent;
-      -webkit-text-stroke: 1px #d7d9df;
-    }
-
-    .hero-copy {
-      color: var(--muted);
-      max-width: 430px;
-      font-size: 15px;
-      line-height: 1.9;
-      margin-top: 30px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-      margin-top: 35px;
-    }
-
-    .button {
-      padding: 15px 21px;
-      display: inline-flex;
-      align-items: center;
-      gap: 22px;
-      background: var(--white);
-      color: #101114;
-      font-size: 12px;
-      font-weight: 700;
-      transition: transform .25s, background .25s;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      background: var(--blue);
-    }
-
-    .text-link {
-      font-size: 12px;
-      color: #d2d2d5;
-    }
-
-    .text-link span { color: var(--blue); }
-
-    .hero-art {
-      min-height: 450px;
-      position: relative;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 50% 45%, #23344a 0%, #131c2a 27%, #0b0d12 65%);
-      border: 1px solid var(--line);
-    }
-
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      width: 72%;
-      aspect-ratio: 1;
-      border: 1px solid rgba(180,213,255,.18);
-      border-radius: 50%;
-      box-shadow: 0 0 70px rgba(105,163,225,.08);
-    }
-
-    .art-core {
-      width: 40%;
-      aspect-ratio: .78;
-      position: relative;
-      background: linear-gradient(130deg,#b7c6d8,#394d64 32%,#111a26 60%,#71869e);
-      clip-path: polygon(20% 0,80% 0,100% 18%,100% 82%,80% 100%,20% 100%,0 82%,0 18%);
-      box-shadow: 0 0 70px rgba(143,194,255,.25);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .art-core::after {
-      content: "";
-      position: absolute;
-      inset: 8%;
-      border: 1px solid rgba(255,255,255,.45);
-      clip-path: inherit;
-    }
-
-    .art-label {
-      position: absolute;
-      bottom: 22px;
-      left: 22px;
-      right: 22px;
-      display: flex;
-      justify-content: space-between;
-      color: #b9c1cd;
-      font-size: 9px;
-      letter-spacing: 2px;
-    }
-
-    .hero-index {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      font-size: 10px;
-      color: #c5d6eb;
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0) rotate(-5deg); }
-      50% { transform: translateY(-13px) rotate(3deg); }
-    }
-
-    .ticker {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 22px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      color: #a9abb4;
-      font-size: 10px;
-      letter-spacing: 3px;
-    }
-
-    .ticker-inner {
-      display: flex;
-      justify-content: space-around;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .ticker b { color: var(--blue); margin-right: 10px; }
-
-    .section { padding-block: 125px; }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 45px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(38px, 5vw, 66px);
-      line-height: 1;
-      letter-spacing: -.06em;
-    }
-
-    .section-head p {
-      max-width: 330px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 22px;
-    }
-
-    .project-card {
-      min-width: 0;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .project-card:first-child { grid-row: span 2; }
-
-    .project-visual {
-      min-height: 280px;
-      aspect-ratio: 1.15;
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 50% 40%,#29384b 0%,#141923 42%,#0b0c10 78%);
-    }
-
-    .project-visual img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      object-fit: contain;
-      padding: 18px;
-      position: absolute;
-      inset: 0;
-      transition: transform .6s ease;
-    }
-
-    .project-card:hover .project-visual img { transform: scale(1.04); }
-
-    .project-card:first-child .project-visual img {
-      height: 100%;
-      min-height: 580px;
-    }
-
-    .project-card:first-child .project-visual {
-      height: calc(100% - 80px);
-      min-height: 580px;
-    }
-
-    .project-card:nth-child(2) .project-visual {
-      background: radial-gradient(ellipse at center,#41332a,#171310 55%,#0c0b0a);
-    }
-
-    .project-card:nth-child(3) .project-visual {
-      background: radial-gradient(ellipse at center,#273f39,#101815 55%,#090b0a);
-    }
-
-    .project-object {
-      width: 31%;
-      aspect-ratio: .8;
-      border: 1px solid rgba(255,255,255,.38);
-      background: linear-gradient(130deg,#9cabbc,#27374a 42%,#0d1119 70%,#a1b0c1);
-      box-shadow: 0 15px 70px rgba(0,0,0,.45);
-      transition: transform .6s;
-    }
-
-    .project-card:hover .project-object { transform: scale(1.08) rotate(5deg); }
-
-    .project-card:nth-child(2) .project-object {
-      border-radius: 42% 42% 12% 12%;
-      background: linear-gradient(130deg,#ead9bb,#9c7142 45%,#271b12);
-    }
-
-    .project-card:nth-child(3) .project-object {
-      border-radius: 10px;
-      background: linear-gradient(130deg,#e2e8e5,#788d86 40%,#1a2925);
-    }
-
-    .project-caption {
-      padding: 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .project-caption h3 { font-size: 18px; }
-
-    .project-caption p {
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 6px;
-    }
-
-    .project-number {
-      color: var(--blue);
-      font-size: 11px;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 9vw;
-      align-items: center;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .portrait-placeholder {
-      aspect-ratio: .82;
-      max-width: 390px;
-      background: linear-gradient(145deg,#252933,#111319);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      color: #a4a9b3;
-      font-size: 11px;
-      letter-spacing: 3px;
-    }
-
-    .about h2 {
-      font-size: clamp(40px,5vw,68px);
-      line-height: 1;
-      letter-spacing: -.06em;
-      margin-bottom: 25px;
-    }
-
-    .about h2 span { color: var(--blue); }
-
-    .about-copy {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-      max-width: 570px;
-    }
-
-    .tools {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .tools span {
-      border: 1px solid var(--line);
-      padding: 10px 13px;
-      font-size: 11px;
-      color: #d3d6dd;
-    }
-
-    .contact {
-      text-align: center;
-      padding-block: 140px;
-    }
-
-    .contact h2 {
-      font-size: clamp(52px,8vw,100px);
-      line-height: .98;
-      letter-spacing: -.07em;
-      margin-bottom: 28px;
-    }
-
-    .contact h2 span { color: var(--blue); }
-
-    .contact p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 30px;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding-block: 27px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    @media (max-width: 850px) {
-      .wrap { width: calc(100% - 36px); }
-      .topbar { height: 70px; }
-      .nav { gap: 16px; }
-      .nav a:not(.contact-link) { display: none; }
-      .hero { grid-template-columns: 1fr; padding-block: 75px; gap: 45px; }
-      .hero-art { min-height: 400px; }
-      .project-grid { grid-template-columns: 1fr 1fr; }
-      .project-card:first-child { grid-row: auto; }
-      .project-card:first-child .project-visual { min-height: 350px; height: auto; }
-      .about { grid-template-columns: 1fr; gap: 45px; }
-      .portrait-placeholder { max-width: 100%; }
-      .section { padding-block: 90px; }
-    }
-
-    @media (max-width: 560px) {
-      .brand { font-size: 18px; }
-      .contact-link { padding: 10px 12px; }
-      h1 { font-size: 57px; }
-      .hero-art { min-height: 330px; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 20px; }
-      .project-grid { grid-template-columns: 1fr; }
-      .project-visual, .project-card:first-child .project-visual { min-height: 330px; }
-      .ticker-inner { justify-content: flex-start; padding-inline: 10px; }
-      .contact { padding-block: 100px; }
-      footer { flex-direction: column; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090d">
+<meta name="description" content="Pixelpath3D by Pirendra — product visualization, 3D product animation and creative post-production.">
+<title>Pixelpath3D® — Product Visuals with Presence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090d;--panel:#0d1118;--panel2:#111722;--text:#f4f6fb;--muted:#9ba5b5;--line:rgba(225,235,255,.13);--blue:#9ccfff;--max:1440px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(var(--max),calc(100% - 10vw));margin-inline:auto}
+.topbar{height:84px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-family:Manrope,sans-serif;font-weight:800;font-size:22px;letter-spacing:-1.2px}
+.brand span,.blue{color:var(--blue)}
+.brand sup{font-size:9px;vertical-align:top;margin-left:2px}
+.nav{display:flex;align-items:center;gap:34px;font-size:12px;color:#c8cfdb}
+.nav a:hover{color:var(--blue)}
+.nav .talk{border:1px solid #5a6574;padding:12px 17px;transition:.25s}
+.nav .talk:hover{background:var(--text);color:var(--bg)}
+.hero{min-height:680px;display:grid;grid-template-columns:1fr 1.05fr;gap:6vw;align-items:center;padding-block:82px 100px}
+.eyebrow{font-size:10px;letter-spacing:2.6px;text-transform:uppercase;color:var(--blue);margin-bottom:25px}
+h1,h2,h3{font-family:Manrope,sans-serif}
+h1{font-size:clamp(58px,7.3vw,112px);font-weight:600;letter-spacing:-.085em;line-height:.91}
+h1 .outline{color:transparent;-webkit-text-stroke:1px #e2e9f3}
+.hero-copy{max-width:440px;color:var(--muted);font-size:15px;line-height:1.9;margin-top:28px}
+.actions{display:flex;align-items:center;gap:24px;margin-top:34px}
+.button{display:inline-flex;align-items:center;gap:26px;background:#f3f6fb;color:#0a0c10;padding:15px 19px;font-size:12px;font-weight:700;transition:transform .25s,background .25s}
+.button:hover{transform:translateY(-3px);background:var(--blue)}
+.text-link{font-size:12px;color:#d7dce5}
+.hero-frame{position:relative;min-height:480px;height:clamp(420px,42vw,610px);overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 45%,#23354a,#0b1018 68%);isolation:isolate}
+.hero-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(3,5,8,.7));pointer-events:none;z-index:1}
+.hero-frame img{position:absolute;inset:0;object-fit:contain;padding:5%;transition:transform .8s}
+.hero-frame:hover img{transform:scale(1.035)}
+.hero-meta{position:absolute;z-index:2;bottom:22px;left:24px;right:24px;display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:1.8px;color:#e0e9f5}
+.hero-tag{position:absolute;z-index:2;top:20px;left:20px;padding:9px 11px;border:1px solid rgba(255,255,255,.25);background:rgba(7,9,13,.45);font-size:9px;letter-spacing:1.4px}
+.ticker{border-block:1px solid var(--line);padding:21px 0;color:#b7c0ce;font-size:10px;letter-spacing:2.5px}
+.ticker-inner{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.ticker b{color:var(--blue);margin-right:9px}
+.section{padding-block:120px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px}
+.section-head h2,.about h2{font-size:clamp(42px,5.3vw,76px);font-weight:500;line-height:.98;letter-spacing:-.075em}
+.section-head>p{max-width:350px;color:var(--muted);font-size:13px;line-height:1.85}
+.project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.project-card{min-width:0;position:relative;border:1px solid var(--line);background:var(--panel);overflow:hidden;grid-column:span 4;transition:border-color .3s,transform .3s}
+.project-card.featured{grid-column:span 8;grid-row:span 2}
+.project-card:hover{border-color:rgba(156,207,255,.55);transform:translateY(-3px)}
+.project-visual{position:relative;aspect-ratio:1.08;background:radial-gradient(ellipse at center,#202b3a,#0a0d12 75%);overflow:hidden}
+.featured .project-visual{aspect-ratio:auto;height:calc(100% - 76px);min-height:550px}
+.project-visual img{object-fit:contain;padding:0;transition:transform .65s}
+.project-card:hover .project-visual img{transform:scale(1.035)}
+.project-caption{padding:20px 21px;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:76px}
+.project-caption h3{font-size:16px;font-weight:600;letter-spacing:-.4px}
+.project-caption p{font-size:11px;color:var(--muted);margin-top:6px}
+.project-number{font-size:10px;color:var(--blue);white-space:nowrap}
+.gallery-note{margin-top:22px;color:#7f8999;font-size:11px}
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:9vw;align-items:center;border-block:1px solid var(--line)}
+.portrait{max-width:430px;aspect-ratio:.82;border:1px solid var(--line);background:linear-gradient(145deg,#171e29,#0c0f15);display:flex;align-items:center;justify-content:center;color:#9aa7b8;text-align:center;font-size:10px;letter-spacing:2px;padding:24px}
+.about-copy{max-width:600px;color:var(--muted);font-size:14px;line-height:2;margin-top:25px}
+.tools{display:flex;gap:9px;flex-wrap:wrap;margin-top:27px}
+.tools span{border:1px solid var(--line);padding:10px 13px;font-size:11px;color:#d9e1ed}
+.services{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:55px}
+.service{padding:26px;border-right:1px solid var(--line)}
+.service:last-child{border-right:0}
+.service small{color:var(--blue);font-size:10px;letter-spacing:1.5px}
+.service h3{font-size:18px;font-weight:500;margin:17px 0 9px}
+.service p{font-size:12px;color:var(--muted);line-height:1.8}
+.contact{text-align:center;padding-block:145px}
+.contact h2{font-size:clamp(55px,8.5vw,120px);font-weight:500;line-height:.9;letter-spacing:-.09em}
+.contact p{color:var(--muted);font-size:13px;margin:25px 0 30px}
+footer{border-top:1px solid var(--line);padding-block:27px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(max-width:900px){.wrap{width:calc(100% - 40px)}.hero{grid-template-columns:1fr;gap:40px;padding-block:70px}.hero-frame{height:clamp(350px,70vw,600px)}.project-card,.project-card.featured{grid-column:span 6;grid-row:auto}.featured .project-visual{height:auto;min-height:0;aspect-ratio:1.08}.about{grid-template-columns:1fr;gap:40px}.portrait{max-width:100%;aspect-ratio:1.2}.section{padding-block:90px}}
+@media(max-width:580px){.topbar{height:70px}.brand{font-size:19px}.nav{gap:10px}.nav a:not(.talk){display:none}.nav .talk{padding:10px 12px}.hero{padding-block:62px}.hero-frame{min-height:330px}.ticker-inner{justify-content:flex-start}.section-head{display:block}.section-head>p{margin-top:20px}.project-grid{grid-template-columns:1fr}.project-card,.project-card.featured{grid-column:1}.project-visual,.featured .project-visual{aspect-ratio:1.08;min-height:0}.project-caption{padding:17px}.services{grid-template-columns:1fr}.service{border-right:0;border-bottom:1px solid var(--line)}.service:last-child{border-bottom:0}.contact{padding-block:100px}footer{flex-direction:column}}
+</style>
 </head>
-
 <body>
-  <header class="topbar wrap">
-    <a href="#" class="brand">Pixelpath<span>3D</span><sup>®</sup></a>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#tools">Tools</a>
-      <a href="#contact" class="contact-link">Let's Talk ↗</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero wrap">
-      <div class="hero-content">
-        <p class="eyebrow">Independent 3D Artist · India</p>
-
-        <h1>
-          Crafted<br>
-          to be<br>
-          <span class="outline">seen.</span>
-        </h1>
-
-        <p class="hero-copy">
-          I'm Pirendra. I create product visuals, cinematic animations
-          and polished digital content that help products stand out.
-        </p>
-
-        <div class="actions">
-          <a href="#work" class="button">Explore my work <span>↘</span></a>
-          <a href="#about" class="text-link">More about me <span>↗</span></a>
-        </div>
-      </div>
-
-      <div class="hero-art" aria-label="Abstract product-inspired visual">
-        <span class="hero-index">PP — 001 / 2026</span>
-        <div class="art-core"></div>
-        <div class="art-label">
-          <span>FORM / LIGHT / DETAIL</span>
-          <span>PIXELPATH3D</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="ticker">
-      <div class="ticker-inner wrap">
-        <span><b>✳</b> PRODUCT VISUALIZATION</span>
-        <span><b>✳</b> 3D ANIMATION</span>
-        <span><b>✳</b> CREATIVE EDITING</span>
-        <span><b>✳</b> VISUAL STORYTELLING</span>
-      </div>
+<header class="topbar wrap">
+  <a href="#" class="brand">Pixelpath<span>3D</span><sup>®</sup></a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#work">Work</a><a href="#about">About</a><a href="#services">Services</a><a class="talk" href="#contact">Let's Talk ↗</a>
+  </nav>
+</header>
+<main>
+  <section class="hero wrap">
+    <div>
+      <p class="eyebrow">Independent 3D Artist · India</p>
+      <h1>Products<br>made to<br><span class="outline">stand out.</span></h1>
+      <p class="hero-copy">I’m Pirendra. I create bold product visuals and cinematic animations that help brands present their products with clarity, detail and impact.</p>
+      <div class="actions"><a class="button" href="#work">Explore my work <span>↘</span></a><a class="text-link" href="#about">Meet the artist ↗</a></div>
     </div>
-
-    <section class="section wrap" id="work">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">01 — Selected projects</p>
-          <h2>Made with<br>purpose.</h2>
-        </div>
-        <p>
-          A selection of product-focused visual work.
-          More renders and animations will be added here.
-        </p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="project-visual">
-            <img src="assets/images/gopro%201.png" alt="GoPro product render" loading="lazy">
-          </div>
-          <div class="project-caption">
-            <div>
-              <h3>GoPro — Product Visuals</h3>
-              <p>Product visualization · 3D</p>
-            </div>
-            <span class="project-number">01 ↗</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual">
-            <img src="assets/images/estee%201.jpg" alt="Estée Lauder product render" loading="lazy">
-          </div>
-          <div class="project-caption">
-            <div>
-              <h3>Estée Lauder</h3>
-              <p>Product render · Lighting</p>
-            </div>
-            <span class="project-number">02 ↗</span>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual">
-            <img src="assets/images/insta%20360%201.jpg" alt="Insta360 product render" loading="lazy">
-          </div>
-          <div class="project-caption">
-            <div>
-              <h3>Insta360 — Product Visuals</h3>
-              <p>Materials · Composition</p>
-            </div>
-            <span class="project-number">03 ↗</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section about wrap" id="about">
-      <div class="portrait-placeholder">PORTRAIT WILL BE ADDED</div>
-
-      <div>
-        <p class="eyebrow">02 — A little about me</p>
-        <h2>Good visuals.<br><span>Thoughtful craft.</span></h2>
-
-        <p class="about-copy">
-          I'm Pirendra, the artist behind Pixelpath3D. My work focuses
-          on product visualization, animation, editing and the small
-          details that make a visual feel complete.
-        </p>
-
-        <div class="tools" id="tools">
-          <span>Blender</span>
-          <span>Premiere Pro</span>
-          <span>Photoshop</span>
-          <span>AI-assisted tools</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact wrap" id="contact">
-      <p class="eyebrow">03 — Have a project?</p>
-      <h2>Let's make<br><span>it stand out.</span></h2>
-      <p>Have an idea or product to showcase? Let's talk.</p>
-      <a href="mailto:YOUR_EMAIL@example.com" class="button">
-        Contact me <span>↗</span>
-      </a>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <a href="#" class="brand">Pixelpath<span>3D</span><sup>®</sup></a>
-    <p>© <span id="year">2026</span> Pixelpath3D · Pirendra</p>
-    <p>Made with care.</p>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(
-      ".section-head, .project-card, .about > div, .contact"
-    ).forEach(element => {
-      element.classList.add("reveal");
-      observer.observe(element);
-    });
-  </script>
+    <div class="hero-frame">
+      <span class="hero-tag">PRODUCT VISUALIZATION / 001</span>
+      <img src="assets/images/estee%201.jpg" alt="Estée Lauder product render" onerror="this.onerror=null;this.src='assets/images/gopro%201.png'">
+      <div class="hero-meta"><span>FORM / LIGHT / DETAIL</span><span>PIXELPATH3D</span></div>
+    </div>
+  </section>
+  <div class="ticker"><div class="ticker-inner wrap"><span><b>✳</b> PRODUCT VISUALIZATION</span><span><b>✳</b> 3D ANIMATION</span><span><b>✳</b> CREATIVE EDITING</span><span><b>✳</b> VISUAL STORYTELLING</span></div></div>
+  <section class="section wrap" id="work">
+    <div class="section-head"><div><p class="eyebrow">01 — Selected projects</p><h2>Real work.<br><span class="blue">Carefully crafted.</span></h2></div><p>A closer look at product renders made with attention to materials, lighting and composition.</p></div>
+    <div class="project-grid">
+      <article class="project-card featured"><div class="project-visual"><img src="assets/images/gopro%201.png" alt="GoPro product visualization" loading="lazy"></div><div class="project-caption"><div><h3>GoPro — Product Visuals</h3><p>Product visualization · Blender</p></div><span class="project-number">01 ↗</span></div></article>
+      <article class="project-card"><div class="project-visual"><img src="assets/images/estee%201.jpg" alt="Estée Lauder product render" loading="lazy"></div><div class="project-caption"><div><h3>Estée Lauder</h3><p>Beauty product visual</p></div><span class="project-number">02 ↗</span></div></article>
+      <article class="project-card"><div class="project-visual"><img src="assets/images/insta%20360.jpg" alt="Insta360 product visualization" loading="lazy" onerror="this.onerror=null;this.src='assets/images/insta%20360%201.jpg'"></div><div class="project-caption"><div><h3>Insta360</h3><p>Camera product visuals</p></div><span class="project-number">03 ↗</span></div></article>
+      <article class="project-card"><div class="project-visual"><img src="assets/images/lancaster%201.png" alt="Lancaster product render" loading="lazy"></div><div class="project-caption"><div><h3>Lancaster</h3><p>Product render · Lighting</p></div><span class="project-number">04 ↗</span></div></article>
+      <article class="project-card"><div class="project-visual"><img src="assets/images/estee%202.jpg" alt="Estée Lauder alternate product render" loading="lazy"></div><div class="project-caption"><div><h3>Beauty — Detail Study</h3><p>Materials · Composition</p></div><span class="project-number">05 ↗</span></div></article>
+    </div>
+    <p class="gallery-note">More product studies and animation work will be added as projects are published.</p>
+  </section>
+  <section class="section about wrap" id="about">
+    <div class="portrait">YOUR PORTRAIT<br>ADD PHOTO WHEN READY</div>
+    <div><p class="eyebrow">02 — About the artist</p><h2>Thoughtful craft.<br><span class="blue">Striking visuals.</span></h2><p class="about-copy">I’m Pirendra, the artist behind Pixelpath3D. I focus on product visualization, animation and polished edits. I care about the details that make a product feel clear, premium and memorable.</p><div class="tools"><span>Blender</span><span>Premiere Pro</span><span>Photoshop</span><span>AI-assisted tools</span></div></div>
+  </section>
+  <section class="section wrap" id="services">
+    <p class="eyebrow">03 — What I can create</p><h2 style="font-size:clamp(40px,5vw,70px);font-weight:500;letter-spacing:-.07em">Built for the<br>way products are seen.</h2>
+    <div class="services"><article class="service"><small>01 / VISUALS</small><h3>Product Rendering</h3><p>Clean, detailed images for product pages, portfolios and campaigns.</p></article><article class="service"><small>02 / MOTION</small><h3>Product Animation</h3><p>Short, cinematic product videos that show shape, features and detail.</p></article><article class="service"><small>03 / FINISH</small><h3>Editing & Polish</h3><p>Careful editing and finishing to make each visual feel complete.</p></article></div>
+  </section>
+  <section class="contact wrap" id="contact"><p class="eyebrow">04 — Have a project?</p><h2>Let’s make<br><span class="blue">it stand out.</span></h2><p>Have a product to showcase? Let’s talk about your idea.</p><a href="mailto:YOUR_EMAIL@example.com" class="button">Contact me <span>↗</span></a></section>
+</main>
+<footer class="wrap"><a href="#" class="brand">Pixelpath<span>3D</span><sup>®</sup></a><p>© <span id="year">2026</span> Pixelpath3D · Pirendra</p><p>Made with care.</p></footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");observer.unobserve(entry.target)}})},{threshold:.08});
+document.querySelectorAll(".section-head,.project-card,.about>div,.service,.contact").forEach(el=>{el.classList.add("reveal");observer.observe(el)});
+</script>
 </body>
 </html>
